@@ -1,8 +1,7 @@
 module Crema
-  class Configuration < OpenStruct
+  class Configuration
     attr_accessor :url, :controllers
 
-    # can add api_keys
     def initialize
       @url = ENV["CREAMA_URL"]
       @controllers = []
