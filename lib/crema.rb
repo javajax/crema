@@ -2,11 +2,11 @@ require "faraday"
 require "json"
 require "ostruct"
 require "dotenv"
-require "pry"
 
 Dotenv.load
 
 require "crema/version"
+require "crema/configuration"
 require "crema/controllers/base"
 
 module Crema
