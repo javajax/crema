@@ -22,27 +22,15 @@ Or install it yourself as:
 
 
 ```ruby
-    class Crema::CookieController < Crema::Controller
-      class << self
-        attr_accessor :session
-      end
-
+    class ApiController < Crema::Controller
       def filter(env)
-        env[:authentication] == :session
+        env[:authentication] == :api
       end
 
       def callbefore(request_env)
-        unless self.class.session.nil?
-          request_env[:request_headers]["Cookie"] = self.class.session
-        end
+        request_env[:request_headers]["Content-Type"] = "application/json"
+        request_env[:request_headers]["API_KEY"] = ENV["APPLICATION_API_KEY"]
         request_env
-      end
-
-      def callback(response_env)
-        if response_env.response_headers["set-cookie"]
-          self.class.session = response_env.response_headers["set-cookie"]
-        end
-        response_env
       end
     end
 ```
