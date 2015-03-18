@@ -7,7 +7,7 @@ class Crema::Controller < Faraday::Middleware
   end
 
   def self.setup(verbs, path)
-    verbs(verbs)
+    verbs(*verbs)
     path(path)
   end
   
